@@ -5,7 +5,17 @@ project(Factorial LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Factorial main.cpp)
+include_directories(./include)
+
+# target_sources(Factorial
+#   PRIVATE
+#     src/main.cpp
+# )
+
+file(GLOB SOURCES "src/*.cpp")
+
+add_executable(Factorial ${SOURCES}
+  include/verylong.h)
 
 include(GNUInstallDirs)
 install(TARGETS Factorial
